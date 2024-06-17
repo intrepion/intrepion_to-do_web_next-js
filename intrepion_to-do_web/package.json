@@ -35,7 +35,8 @@
     "lint:check": "next lint",
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "version": "0.1.0"
 }
