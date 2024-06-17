@@ -36,7 +36,8 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "version": "0.1.0"
 }
