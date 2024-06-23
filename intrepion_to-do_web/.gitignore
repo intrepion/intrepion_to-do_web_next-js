@@ -37,3 +37,7 @@ next-env.d.ts
 
 # coverage
 src/coverage
+
+# cypress
+cypress/screenshots
+cypress/videos
