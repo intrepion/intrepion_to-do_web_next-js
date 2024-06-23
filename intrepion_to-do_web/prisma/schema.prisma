@@ -15,3 +15,10 @@ datasource db {
   relationMode = "prisma"
   url          = env("POSTGRES_PRISMA_URL") // uses connection pooling
 }
+
+model Item {
+  completed Boolean @default(false)
+  id        Int     @id @default(autoincrement())
+  title     String  @db.VarChar(255)
+  visible   Boolean @default(true)
+}
