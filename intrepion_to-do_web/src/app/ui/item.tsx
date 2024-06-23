@@ -21,6 +21,14 @@ export default function ItemUi({ item }: Props) {
             View
           </Link>
         </span>
+        <span>
+          <Link
+            data-cy={"link-items-" + item.id + "-edit"}
+            href={"/items/" + item.id + "/edit"}
+          >
+            Edit
+          </Link>
+        </span>
       </div>
     </li>
   );
