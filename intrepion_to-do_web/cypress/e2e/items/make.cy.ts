@@ -1,5 +1,15 @@
 describe("items make spec", () => {
   it("passes", () => {
+    cy.intercept("GET", "/api/items", {
+      items: [
+        {
+          completed: false,
+          id: 1,
+          title: "test title",
+          visible: true,
+        },
+      ],
+    }).as("itemsView");
     cy.intercept("POST", "/api/items", {}).as("itemsMake");
 
     cy.visit("localhost:3000");
