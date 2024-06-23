@@ -41,15 +41,15 @@ jobs:
       - name: Run application in background
         run: npm run dev &
 
-      # - name: Run end to end tests
-      #   run: npm run cypress
+      - name: Run end to end tests
+        run: npm run cypress
 
-      # - if: failure()
-      #   name: Upload screenshots
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: cypress-screenshots
-      #     path: intrepion_to-do_web/cypress/screenshots
+      - if: failure()
+        name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: intrepion_to-do_web/cypress/screenshots
 
     strategy:
       matrix:
