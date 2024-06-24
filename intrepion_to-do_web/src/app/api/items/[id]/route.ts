@@ -2,6 +2,32 @@ import { unstable_noStore } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 
+export const DELETE = async (
+  req: NextRequest,
+  context: { params: { id: string } },
+) => {
+  const id = Number(context.params.id || 0);
+
+  const item = await prisma.item.delete({
+    where: {
+      id: id,
+    },
+  });
+
+  if (!item) {
+    return NextResponse.json(
+      {
+        message: "Error",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+
+  return NextResponse.json({});
+};
+
 export const GET = async (
   _req: NextRequest,
   context: { params: { id: string } },
