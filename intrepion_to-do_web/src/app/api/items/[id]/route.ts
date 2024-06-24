@@ -17,3 +17,25 @@ export const GET = async (
 
   return NextResponse.json({ item });
 };
+
+export const PUT = async (
+  req: NextRequest,
+  context: { params: { id: string } },
+) => {
+  const { title } = await req.json();
+  const id = Number(context.params.id || 0);
+
+  const item = await prisma.item.update({
+    where: {
+      id: Number(id),
+    },
+
+    data: {
+      title,
+    },
+  });
+
+  return NextResponse.json({
+    item,
+  });
+};
