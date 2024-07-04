@@ -20,6 +20,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "format": "prettier --write --ignore-unknown .",
+    "format:check": "prettier --check --ignore-unknown .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
     "start": "next start"
