@@ -22,6 +22,8 @@
   "name": "intrepion_to-do_web",
   "private": true,
   "scripts": {
+    "accept": "cypress run",
+    "accept:open": "cypress open",
     "build": "next build",
     "dev": "next dev",
     "format": "prettier --write --ignore-unknown .",
