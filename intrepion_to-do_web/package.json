@@ -27,7 +27,9 @@
     "format:check": "prettier --check --ignore-unknown .",
     "lint": "next lint --fix",
     "lint:check": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "test": "vitest run --coverage --root src/",
+    "test:watch": "vitest"
   },
   "version": "0.1.0"
 }
