@@ -15,3 +15,58 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
   provider      = "prisma-client-js"
 }
+
+model Account {
+  access_token       String?
+  expires_at         Int?
+  id                 String  @id @default(cuid())
+  id_token           String?
+  oauth_token_secret String?
+  oauth_token        String?
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String?
+  scope              String?
+  session_state      String?
+  token_type         String?
+  type               String
+  userId             String  @map("user_id")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  expires      DateTime
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String   @map("user_id")
+
+  @@index([id])
+  @@index([userId])
+}
+
+model User {
+  accounts      Account[]
+  email         String?   @unique
+  emailVerified DateTime?
+  id            String    @id @default(cuid())
+  image         String?
+  name          String?
+  sessions      Session[]
+
+  @@index([id])
+}
+
+model VerificationToken {
+  expires    DateTime
+  id         Int      @id @default(autoincrement())
+  identifier String
+  token      String   @unique
+
+  @@unique([identifier, token])
+  @@index([id])
+}
