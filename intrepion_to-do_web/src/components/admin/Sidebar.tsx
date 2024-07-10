@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import {signOut} from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   return (

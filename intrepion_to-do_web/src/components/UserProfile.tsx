@@ -1,14 +1,14 @@
 "use client";
-import {signOut} from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function UserProfile() {
-  const {data: session, status} = useSession();
+  const { data: session, status } = useSession();
 
   const handleSignOutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

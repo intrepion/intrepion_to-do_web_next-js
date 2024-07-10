@@ -1,4 +1,4 @@
-const MyWidget = ({title}: {title?: string}) => {
+const MyWidget = ({ title }: { title?: string }) => {
   return (
     <div className="widget">
       {title || "Widget Title"}

@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
-export default function CancelButton({route}: {route?: string}) {
+export default function CancelButton({ route }: { route?: string }) {
   const router = useRouter();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
