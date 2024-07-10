@@ -4,8 +4,8 @@ import { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
 if (
-  !process.env.GITHUB_CLIENT_ID ||
-  !process.env.GITHUB_SECRET_ID ||
+  !process.env.OAUTH_GITHUB_CLIENT_ID ||
+  !process.env.OAUTH_GITHUB_SECRET_ID ||
   !process.env.NEXTAUTH_SECRET
 ) {
   throw new Error("Auth required env variables are not set");
@@ -18,8 +18,8 @@ export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_SECRET_ID,
+      clientId: process.env.OAUTH_GITHUB_CLIENT_ID,
+      clientSecret: process.env.OAUTH_GITHUB_SECRET_ID,
     }),
   ],
   callbacks: {

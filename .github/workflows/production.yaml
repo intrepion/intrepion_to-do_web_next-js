@@ -3,6 +3,10 @@ defaults:
     working-directory: ./intrepion_to-do_web
 
 env:
+  NEXTAUTH_URL: "http://localhost:3000"
+  NEXTAUTH_SECRET: " "
+  OAUTH_GITHUB_CLIENT_ID: " "
+  OAUTH_GITHUB_SECRET_ID: " "
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
