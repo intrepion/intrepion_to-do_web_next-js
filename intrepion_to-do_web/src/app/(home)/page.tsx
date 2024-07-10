@@ -1,16 +1,10 @@
-import UserProfile from "@/components/UserProfile";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default async function Home() {
   return (
     <div>
-      <header>
-        <h1>Auth Starter Template</h1>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/admin">Admin Dashboard</a>
-          <UserProfile />
-        </nav>
-      </header>
+      <Header />
       <main>
         <p>
           This project build by&nbsp;
@@ -49,7 +43,7 @@ export default async function Home() {
           </li>
         </ul>
       </main>
-      <footer>NextAuth Starter Template Footer.</footer>
+      <Footer />
     </div>
   );
 }

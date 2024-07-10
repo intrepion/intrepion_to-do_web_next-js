@@ -1,4 +1,5 @@
 "use client";
+
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,9 +29,9 @@ export default function UserProfile() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fillRule="evenodd"
-            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
             clipRule="evenodd"
+            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+            fillRule="evenodd"
           ></path>
         </svg>
         Sign In
@@ -40,20 +41,20 @@ export default function UserProfile() {
 
   return (
     <a
-      href="/api/auth/signout"
-      title="Click to SignOut"
-      onClick={handleSignOutClick}
       className="user-profile"
+      href="/api/auth/signout"
+      onClick={handleSignOutClick}
+      title="Click to SignOut"
     >
       <Image
+        alt="User Profile Image"
+        className="rounded"
+        height={24}
         src={
           session?.user?.image ||
           `https://avatars.dicebear.com/api/micah/${session?.user?.name}.svg`
         }
-        alt="User Profile Image"
         width={24}
-        height={24}
-        className="rounded"
       />
       {session?.user?.name}
     </a>
