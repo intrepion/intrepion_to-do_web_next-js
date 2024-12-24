@@ -1,0 +1,31 @@
+# /docker-compose.yml
+
+services:
+  init:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.init
+    volumes:
+      - ./:/app
+
+  nextjs-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+
+  nextjs-prod:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
