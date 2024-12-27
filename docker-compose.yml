@@ -1,12 +1,14 @@
 # /docker-compose.yml
 
+version: '3.8'
+
 services:
-  init:
+  nextjs-init:
     build:
       context: .
       dockerfile: docker/Dockerfile.init
     volumes:
-      - ./:/app
+      - .:/app
 
   nextjs-dev:
     build:
@@ -15,16 +17,16 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./:/app
+      - ./intrepion-todo:/app
       - /app/node_modules
-      - /app/.next
     environment:
       - NODE_ENV=development
+    command: npm run dev
 
   nextjs-prod:
     build:
       context: .
-      dockerfile: docker/Dockerfile.prod
+      dockerfile: docker/Dockerfile.publish
     ports:
       - "3000:3000"
     environment:

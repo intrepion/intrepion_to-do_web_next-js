@@ -1,18 +1,11 @@
 # /docker/Dockerfile.init
 
-# Use Node.js 22-alpine as the base image
-FROM node:22-alpine
-
-# Set working directory
+# Project initialization
+FROM node:22.0.0
 WORKDIR /app
-
-# Copy init.sh
 COPY init.sh .
-
-# Install dos2unix and convert line endings
-RUN apk add dos2unix && \
+RUN apt-get update && \
+    apt-get install -y dos2unix && \
     dos2unix init.sh && \
     chmod +x init.sh
-
-# Run the initialization script
-ENTRYPOINT ["/bin/sh", "init.sh"]
+ENTRYPOINT ["/bin/bash", "init.sh"]
