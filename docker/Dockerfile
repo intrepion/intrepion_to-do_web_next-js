@@ -1,12 +1,12 @@
 # /docker/Dockerfile
 
 # Development environment setup
-FROM node:22.0.0
+FROM node:22-alpine
 WORKDIR /app
 
 # Install development dependencies and tools
-RUN apt-get update && \
-    apt-get install -y git
+RUN apk update && \
+    apk add git
 
 # Create a more robust entrypoint script that ensures dependencies are installed
 RUN echo '#!/bin/bash\n\

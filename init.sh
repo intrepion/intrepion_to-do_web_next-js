@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 # /init.sh
 # This script initializes the complete Next.js project structure
 
@@ -17,14 +19,15 @@ version_prettier="3.2.4"
 version_tailwind="3.4.1"
 
 # Create the project directory and initialize Next.js
-npx create-next-app@${version_next} ${app_name} \
+# Pipe 'yes' to automatically accept the installation of create-next-app
+yes | npx create-next-app@${version_next} ${app_name} \
   --typescript \
   --tailwind \
   --eslint \
   --app \
   --src-dir \
   --import-alias "@/*" \
-  --no-git
+  --yes
 
 cd ${app_name}
 
@@ -128,9 +131,11 @@ test('has title', async ({ page }) => {
 EOL
 
 # Install Playwright browsers
-npx playwright install --with-deps chromium
+# Pipe 'yes' to automatically accept the installation of Playwright
+yes | npx playwright install --with-deps chromium
 
 # Format all files
+# Moved this to after development dependencies are installed
 npm run format
 
 echo "Project initialization complete! 🚀"
