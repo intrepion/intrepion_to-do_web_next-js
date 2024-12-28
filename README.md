@@ -1,6 +1,6 @@
 <!-- /README.md -->
 
-# intrepion-todo
+# intrepion_to-do_web_next-js
 intrepion To Do web app written using Next.js framework
 
 # Intrepion To Do - Next.js Project
@@ -22,7 +22,7 @@ Before starting, ensure you have these tools installed on your system:
 ## Project Structure
 
 ```
-intrepion-todo/
+intrepion-to-do-next-js/
 ├── docker/                     # Docker configuration files
 │   ├── Dockerfile             # Development environment
 │   ├── Dockerfile.init        # Project initialization

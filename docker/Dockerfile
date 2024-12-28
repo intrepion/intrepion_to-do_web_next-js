@@ -1,29 +1,31 @@
 # /docker/Dockerfile
 
-# Development environment setup
-FROM node:22-alpine
+# Use Node.js 22-alpine as the base image
+FROM node:22-alpine AS development
+
+# Set working directory
 WORKDIR /app
 
-# Install development dependencies and tools
-RUN apk update && \
-    apk add git
+# Install PM2 globally
+RUN npm install -g pm2
 
-# Create a more robust entrypoint script that ensures dependencies are installed
-RUN echo '#!/bin/bash\n\
-echo "Checking for dependencies..."\n\
-if [ ! -d "node_modules" ] || [ ! -f "node_modules/.package-lock.json" ]; then\n\
-    echo "Installing dependencies..."\n\
-    # Remove any existing node_modules to ensure clean install\n\
-    rm -rf node_modules\n\
-    # Install dependencies\n\
-    npm install\n\
-else\n\
-    echo "Dependencies already installed"\n\
-fi\n\
-\n\
-echo "Starting development server..."\n\
-exec npm run dev\n\
-' > /entrypoint.sh && chmod +x /entrypoint.sh
+# Copy package.json and package-lock.json (if available)
+COPY intrepion-to-do-next-js/package*.json ./
 
+# Install dependencies
+RUN npm install
+
+# Copy the application code
+COPY intrepion-to-do-next-js/ ./
+
+# Create entrypoint script
+RUN echo '#!/bin/sh\n\
+# Start Next.js development server with PM2 and watch for changes\n\
+pm2-runtime start npm --name "nextjs-dev" -- start --watch\n\
+' > /app/entrypoint.sh && chmod +x /app/entrypoint.sh
+
+# Expose port 3000
 EXPOSE 3000
-ENTRYPOINT ["/entrypoint.sh"]
+
+# Start the application using the entrypoint script
+CMD ["sh", "/app/entrypoint.sh"]
